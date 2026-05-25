@@ -15,6 +15,7 @@ A full-stack microservices-based Hospital Appointment Management System built wi
 - [Environment Setup](#environment-setup)
 - [Running the Application](#running-the-application)
 - [API Gateway](#api-gateway)
+- [Project Structure](#project-structure)
 - [Screenshots](#screenshots)
 
 ---
@@ -147,8 +148,8 @@ HAMS is a comprehensive hospital appointment management system that allows patie
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/hams.git
-cd hams
+git clone https://github.com/Divya22022004/Hospital_Appointment_Management_System.git
+cd Hospital_Appointment_Management_System/Final_code_for_HAMS
 ```
 
 ---
@@ -181,7 +182,7 @@ spring.datasource.password=your_password
 
 ### 3. Configure Email (auth-service)
 
-In `auth-service/src/main/resources/application.properties`:
+In `Final_code_for_HAMS/Hospital_Appointment_Management_System_Backend/auth-service/src/main/resources/application.properties`:
 
 ```properties
 spring.mail.host=smtp.gmail.com
@@ -196,7 +197,7 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 
 ### 4. Configure Frontend Environment
 
-In `src/environments/environment.ts`:
+In `Final_code_for_HAMS/hospital-appointment-management-system-frontend/src/environments/environment.ts`:
 
 ```typescript
 export const environment = {
@@ -212,38 +213,40 @@ export const environment = {
 ### Backend — Start services in this order:
 
 ```bash
+cd Final_code_for_HAMS/Hospital_Appointment_Management_System_Backend
+
 # 1. Eureka Server
 cd eureka-server && mvn spring-boot:run
 
 # 2. API Gateway
-cd api-gateway && mvn spring-boot:run
+cd ../api-gateway && mvn spring-boot:run
 
 # 3. Auth Service
-cd auth-service && mvn spring-boot:run
+cd ../auth-service && mvn spring-boot:run
 
 # 4. Patient Service
-cd patient-service && mvn spring-boot:run
+cd ../patient-service && mvn spring-boot:run
 
 # 5. Doctor Profile Service
-cd doctor-profile-service && mvn spring-boot:run
+cd ../doctor-profile-service && mvn spring-boot:run
 
 # 6. Doctor Service
-cd doctor-service && mvn spring-boot:run
+cd ../doctor-service && mvn spring-boot:run
 
 # 7. Appointment Service
-cd appointment-service && mvn spring-boot:run
+cd ../appointment-service && mvn spring-boot:run
 
 # 8. Medical History Service
-cd medical-history-service && mvn spring-boot:run
+cd ../medical-history-service && mvn spring-boot:run
 
 # 9. Notification Service (optional)
-cd notification-service && mvn spring-boot:run
+cd ../notification-service && mvn spring-boot:run
 ```
 
 ### Frontend
 
 ```bash
-cd hospital-appointment-management-system-frontend
+cd Final_code_for_HAMS/hospital-appointment-management-system-frontend
 npm install
 ng serve
 ```
@@ -276,25 +279,26 @@ Authorization: Bearer <jwt-token>
 ## Project Structure
 
 ```
-hams/
-├── Hospital_Appointment_Management_System_Backend/
-│   ├── eureka-server/
-│   ├── api-gateway/
-│   ├── auth-service/
-│   ├── patient-service/
-│   ├── doctor-profile-service/
-│   ├── doctor-service/
-│   ├── appointment-service/
-│   ├── medical-history-service/
-│   └── notification-service/
-└── hospital-appointment-management-system-frontend/
-    ├── src/
-    │   ├── app/
-    │   │   ├── core/          # Services, auth, interceptors
-    │   │   ├── features/      # Feature modules (patient, doctor, admin)
-    │   │   └── shared/        # Models, components
-    │   └── environments/
-    └── package.json
+Hospital_Appointment_Management_System/
+└── Final_code_for_HAMS/
+    ├── Hospital_Appointment_Management_System_Backend/
+    │   ├── eureka-server/
+    │   ├── api-gateway/
+    │   ├── auth-service/
+    │   ├── patient-service/
+    │   ├── doctor-profile-service/
+    │   ├── doctor-service/
+    │   ├── appointment-service/
+    │   ├── medical-history-service/
+    │   └── notification-service/
+    └── hospital-appointment-management-system-frontend/
+        ├── src/
+        │   ├── app/
+        │   │   ├── core/          # Services, auth, interceptors
+        │   │   ├── features/      # Feature modules (patient, doctor, admin)
+        │   │   └── shared/        # Models, components
+        │   └── environments/
+        └── package.json
 ```
 
 ---
@@ -325,13 +329,13 @@ VALUES ('admin@hams.com', '<bcrypt-encoded-password>', 'ROLE_ADMIN', 'ACTIVE');
 
 ### Backend (JUnit + Mockito)
 ```bash
-cd auth-service
+cd Final_code_for_HAMS/Hospital_Appointment_Management_System_Backend/auth-service
 mvn test
 ```
 
 ### Frontend (Vitest)
 ```bash
-cd hospital-appointment-management-system-frontend
+cd Final_code_for_HAMS/hospital-appointment-management-system-frontend
 ng test
 ```
 
